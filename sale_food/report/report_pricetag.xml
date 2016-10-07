@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <template id="minimal_layout_inherit" inherit_id="report.minimal_layout">
+          <xpath expr="//head" position="inside">
+                 <link rel='stylesheet' href="/sale_food/static/src/css/pricetag.css"/>
+          </xpath>
+    </template>
+    <template id="report_pricetag">
+        <div class="page">
+            <t t-foreach="Products" t-as="product">
+                <div class="label_container label_border">
+                    <div class="pricetag">
+                        <div class="label_top">
+                            <t t-esc="product.name"/>
+                        </div>
+                        <div class="label_left">
+                            <div class="product_informations" >
+                                <t t-if="product.code">Code: <t t-esc="product.code"/><br/></t>
+                                <t t-if="product.weight_net">Poids net: <t t-esc="product.weight_net"/>kg<br/>Prix/kg: <t t-esc="product.price_weight_net"/> €/kg<br/></t>
+                                <t t-if="not(product.weight_net) and product.volume">Volume net: <t t-esc="product.volume"/>L<br/>Prix/L: <t t-esc="product.price_volume"/> €/L<br/></t>
+                                <t t-if="product.pricetag_origin">Origine: <t t-esc="product.pricetag_origin"/><br/></t>
+                                <t t-if="product.extra_food_info"><t t-esc="product.extra_food_info"/><br/></t>
+                            </div>
+                        </div>
+                        <div class="label_right">
+                            <div class="product_price">
+                                <t t-esc="product.list_price"/>€
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </template>
+</odoo>
