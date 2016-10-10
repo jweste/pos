@@ -80,6 +80,8 @@ class ProductTemplate(models.Model):
             if pt.country_id:
                 tmp = pt.country_id.name + \
                     (' - ' + tmp if tmp else '')
+            if pt.maker_description:
+                tmp = (tmp and (tmp + ' - ') or '') + pt.maker_description
             pt.pricetag_origin = tmp
 
     @api.depends('fresh_category', 'fresh_range')
