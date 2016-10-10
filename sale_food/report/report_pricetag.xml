@@ -8,27 +8,34 @@
     <template id="report_pricetag">
         <div class="page">
             <t t-foreach="Products" t-as="product">
-                <div class="label_container label_border">
+            <t t-foreach="product['line'].quantity" t-as="q">
+                <div class="label_container">
                     <div class="pricetag">
                         <div class="label_top">
-                            <t t-esc="product.name"/>
+                            <div class="product_name">
+                                <t t-esc="product['product'].name"/>
+                            </div>
                         </div>
                         <div class="label_left">
-                            <div class="product_informations" >
-                                <t t-if="product.code">Code: <t t-esc="product.code"/><br/></t>
-                                <t t-if="product.weight_net">Poids net: <t t-esc="product.weight_net"/>kg<br/>Prix/kg: <t t-esc="product.price_weight_net"/> €/kg<br/></t>
-                                <t t-if="not(product.weight_net) and product.volume">Volume net: <t t-esc="product.volume"/>L<br/>Prix/L: <t t-esc="product.price_volume"/> €/L<br/></t>
-                                <t t-if="product.pricetag_origin">Origine: <t t-esc="product.pricetag_origin"/><br/></t>
-                                <t t-if="product.extra_food_info"><t t-esc="product.extra_food_info"/><br/></t>
+                            <div class="product_informations">
+                                <t t-if="product['product'].code">Code: <t t-esc="product['product'].code"/><br/></t>
+                                <t t-if="product['product'].weight_net"><t t-esc="product['product'].weight_net"/> kg --- <t t-esc="product['product'].price_weight_net"/> €/kg<br/></t>
+                                <t t-if="not(product['product'].weight_net) and product['product'].volume"><t t-esc="product['product'].volume"/>L --- <t t-esc="product['product'].price_volume"/> €/L<br/></t>
                             </div>
                         </div>
                         <div class="label_right">
                             <div class="product_price">
-                                <t t-esc="product.list_price"/>€
+                                <t t-esc="product['product'].list_price"/>€
+                            </div>
+                        </div>
+                        <div class="label_bottom">
+                            <div class="product_informations">
+                                <t name="pricetag_origine" t-if="product['product'].pricetag_origin">Origine: <t t-esc="product['product'].pricetag_origin"/><br/></t>
                             </div>
                         </div>
                     </div>
                 </div>
+            </t>
             </t>
         </div>
     </template>

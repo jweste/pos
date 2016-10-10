@@ -31,6 +31,7 @@
                     </group>
                     <group col="4" colspan="2">
                         <button name="initialize_product" type="object" string="Initialize Products"/>
+                        <!-- <field name="border"/> -->
                    </group>
                     <group string="Products" col="4" colspan="2">
                         <field name="line_ids" options="{'reload_on_button': true}" nolabel="1">

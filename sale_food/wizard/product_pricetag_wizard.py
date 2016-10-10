@@ -60,6 +60,7 @@ class ProductPricetagWizard(models.TransientModel):
     pricetag_model_id = fields.Many2one(
         'pricetag.model', 'Pricetag Model', required=True,
         default=lambda s: s._get_default_model())
+    # border = fields.Boolean('Add a border', default=False)
 
     @api.multi
     def check_report(self):
@@ -90,18 +91,15 @@ class ProductPricetagWizard(models.TransientModel):
     @api.model
     def _get_data_form(self):
         res = {}
-        res['product_ids'] = self._get_product_ids()
+        res['line_ids'] = [line.id for line in self.line_ids]
         res['fields'] = self._get_pricetag_fields()
         res['pricetag_model'] = self.pricetag_model_id.id
+        # res['border'] = self.border
         return res
 
     @api.model
-    def _get_product_ids(self):
-        return [line['product_id'].id for line in self.line_ids]
-
-    @api.model
     def _get_pricetag_fields(self):
-        return [f.id for f in self.pricetag_model_id.field_ids]
+        return [f.id for f in self.category_print_id.field_ids]
 
 
 class ProductPricetagWizardLine(models.TransientModel):
