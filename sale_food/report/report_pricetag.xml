@@ -6,6 +6,7 @@
           </xpath>
     </template>
     <template id="report_pricetag">
+        <t t-call="report.html_container">
         <div class="page">
             <t t-foreach="Products" t-as="product">
             <t t-foreach="product['line'].quantity" t-as="q">
@@ -38,5 +39,6 @@
             </t>
             </t>
         </div>
+        </t>
     </template>
 </odoo>
