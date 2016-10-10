@@ -45,7 +45,6 @@
                     <field name="lines"/>
                     <field name="columns"/>
                     <field name="report_model"/>
-                    <field name="field_ids" widget="many2many_tags"/>
                 </group>
             </sheet>
         </field>

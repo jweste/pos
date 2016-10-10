@@ -6,6 +6,5 @@
         <field name="lines" eval="8"/>
         <field name="pricetag_paperformat_id" ref="sale_food.paperformat_pricetag"/>
         <field name="report_model">sale_food.report_pricetag</field>
-        <field name="field_ids" eval="[(4, ref('product.field_product_product_name')),(4, ref('product.field_product_product_list_price')),(4, ref('field_product_product_price_volume')),(4, ref('field_product_product_price_weight_net')),(4, ref('product.field_product_product_volume')),(4, ref('field_product_product_weight_net'))]"/>
     </record>
 </odoo>

@@ -42,7 +42,3 @@ class PricetagModel(models.Model):
     pricetag_paperformat_id = fields.Many2one(
         'report.paperformat', 'Paper Format', required=True)
     report_model = fields.Char("ID of the report template", required=True)
-    field_ids = fields.Many2many(
-        comodel_name='ir.model.fields',
-        relation='pricetag_model_field_rel', column1='pricetag_model_id',
-        column2='field_id', domain="[('model', '=', 'product.product')]")
